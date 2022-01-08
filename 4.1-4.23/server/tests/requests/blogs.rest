@@ -1,24 +1,43 @@
+//get blogs
 GET http://localhost:3001/api/blogs
 
-###
+###//post blog
 
 POST http://localhost:3001/api/blogs
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZ1enp5ZHVubG9vcGVyIiwiaWQiOiI2MWQ4ZjI0NzI4NzE3ZmU0YjVmOWYwODgiLCJpYXQiOjE2NDE2MDc4NzZ9.MeRRATEpCXEVtUA1X5-6_RNM4XZcWLN6KOGED2rVwOY
 
 {
-    "title":"blog title",
-    "author":"blog author",
-    "url":"www.blog.com",
-    "likes":100
+    "title":"fuzzy title",
+    "author":"fuzzy author",
+    "url":"www.fuzzy.com",
+    "likes":600
 }
 
-###
+###//delete blog
+DELETE http://localhost:3001/api/blogs/61d8f49ea09d9c539e8a7049
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZ1enp5ZHVubG9vcGVyIiwiaWQiOiI2MWQ4ZjI0NzI4NzE3ZmU0YjVmOWYwODgiLCJpYXQiOjE2NDE2MDc4NzZ9.MeRRATEpCXEVtUA1X5-6_RNM4XZcWLN6KOGED2rVwOY
+
+{}
+
+###//create user
 
 POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "username":"FuzzyDunlop",
-    "password":"p",
+    "username":"fuzzydunlooper",
+    "password":"passypass",
     "name":"alex"
+}
+
+### //login
+
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+    "username":"fuzzydunlooper",
+    "password":"passypass"
 }
