@@ -1,6 +1,7 @@
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { voteById } from "../reducers/anecdoteReducer"
-import { setMessage, clearMessage } from "../reducers/messageReducer"
+import { initializeAnecdotes, updateAnecdote } from "../reducers/anecdoteReducer"
+import { setMessage } from "../reducers/messageReducer"
 import Filter from './Filter'
 
 const AnecdoteList = () => {
@@ -8,15 +9,19 @@ const AnecdoteList = () => {
 	const anecdotes = useSelector(state => state.anecdotes)
 	const filter = useSelector(state => state.filter)
 
+	useEffect(() => {
+		dispatch(initializeAnecdotes())
+	}, [dispatch])
+
 	const vote = id => {
-		dispatch(voteById(id))
 		const selected = anecdotes.find(a => a.id === id)
-		dispatch(setMessage(selected.content, "VOTE"))
-		setTimeout(() => dispatch(clearMessage(selected.content)), 5000)
+		const newData = {...selected, votes: selected.votes + 1}
+		dispatch(updateAnecdote(newData))	
+		dispatch(setMessage(selected.content, "VOTE", 5000))
 	}
 
 	return (
-		<div>
+		<div style={{marginTop:100}}>
 			<h2>Anecdotes</h2>
 			<Filter/>
 			{anecdotes
@@ -24,7 +29,7 @@ const AnecdoteList = () => {
 					const content = a.content	
 					return content.toLowerCase().includes(filter.toLowerCase())
 				})
-				.sort((a, b) => a.votes <= b.votes)
+				.sort((a, b) => a.votes < b.votes)
 				.map(anecdote =>
 					<div key={anecdote.id}>
 						<div>

@@ -1,9 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import App from './App'
+import thunk from 'redux-thunk'
 import anecdoteReducer from './reducers/anecdoteReducer'
 import messageReducer from './reducers/messageReducer'
 import filterReducer from './reducers/filterReducer'
@@ -14,11 +11,10 @@ const reducer = combineReducers({
   filter: filterReducer
 })
 
-const store = createStore(reducer, composeWithDevTools())
+const store = createStore(
+    reducer, 
+    composeWithDevTools(
+        applyMiddleware(thunk)
+    ))
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-)
+export default store
