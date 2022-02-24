@@ -1,0 +1,113 @@
+POST http://localhost:4000/api/blogs
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGVtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE2NDU3Mjk4MDd9.6jfIuNUt4Tk_AU7LLGrrdo-NnypqcgVNseQQt1oGDHE
+
+{
+	"author": "author num 2",
+	"url": "www.test num 2.com",
+	"title": "blog title not in list",
+	"year_written": 2000 
+}
+
+###
+
+POST http://localhost:4000/api/blogs
+Content-Type: application/json
+
+{
+	"author": "other author",
+	"url": "www.testnumber2.com",
+	"title": "second blog title"
+}
+
+###
+
+DELETE http://localhost:4000/api/blogs/9
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGVtYWlsLmNvbSIsImlkIjoyLCJpYXQiOjE2NDUxMzc3MjF9.qaoJqyYPTcadSSTjm17c6uFDRuFF0dAbutJ35ThjxY8
+
+###
+
+GET http://localhost:4000/api/blogs
+
+###
+
+GET http://localhost:4000/api/authors
+
+###
+
+PUT http://localhost:4000/api/blogs/6
+Content-Type: application/json
+
+{
+	"likes": 10
+}
+
+###
+
+POST http://localhost:4000/api/users
+Content-Type: application/json
+
+{
+	"username": "test2@email.com",
+	"name": "chubbus"
+}
+
+###
+
+GET http://localhost:4000/api/users
+
+###
+
+GET http://localhost:4000/api/users/1
+
+### 
+
+PUT http://localhost:4000/api/users/test2@email.com
+Content-Type: application/json
+
+{
+	"username": "borked"
+}
+
+###
+
+POST http://localhost:4000/api/login
+Content-Type: application/json
+
+{
+	"username": "test2@email.com",
+	"password": "secret"
+}
+
+###
+
+POST http://localhost:4000/api/logout
+Content-Type: application/json
+
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGVtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE2NDU3Mjk4MDd9.6jfIuNUt4Tk_AU7LLGrrdo-NnypqcgVNseQQt1oGDHE"
+}
+
+###
+
+GET http://localhost:4000/api/readinglists
+
+###
+
+POST http://localhost:4000/api/readinglists
+Content-Type: application/json
+
+{
+	"blogId": 1,
+	"userId": 1
+}
+
+###
+
+POST http://localhost:4000/api/readinglists/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QyQGVtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE2NDU1NzQ3NjZ9.wr-lqvC_ZOmVLKrsWqrUtlfsruj8ZgvEY78UhAFsPpc
+
+{
+	"read": false
+}
